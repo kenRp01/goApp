@@ -19,7 +19,7 @@ func private(w http.ResponseWriter, r *http.Request) {
 func main() {
 	allowedOrigins := handlers.AllowedOrigins([]string{"http://localhost:8080"})
 	allowedMethods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT"})
-	allowedHeaders := handlers.allowedHeaders([]string{"Authorization"})
+	allowedHeaders := handlers.AllowedHeaders([]string{"Authorization"})
 
 	r := mux.NewRouter()
 	r.HandleFunc("/public", public)
