@@ -24,3 +24,18 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+let app
+
+// ログイン後のブラウザ更新対策
+firebase.auth().onAuthStateChanged(user => {
+  /* eslint-disable no-new */
+  if (!app) {
+    new Vue({
+      el: "#app",
+      router,
+      componrnts: {App },
+      template: '<App/>'
+    })
+  }
+})
