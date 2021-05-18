@@ -3,6 +3,7 @@ module goApp
 go 1.16
 
 require (
+	cloud.google.com/go v0.82.0 // indirect
 	cloud.google.com/go/firestore v1.5.0 // indirect
 	cloud.google.com/go/storage v1.15.0 // indirect
 	firebase.google.com/go v3.13.0+incompatible // indirect
@@ -31,7 +32,6 @@ require (
 	golang.org/x/sys v0.0.0-20210514084401-e8d321eab015 // indirect
 	golang.org/x/tools v0.1.1 // indirect
 	google.golang.org/api v0.46.0 // indirect
-	google.golang.org/genproto v0.0.0-20210513213006-bf773b8c8384 // indirect
 	google.golang.org/grpc v1.37.1 // indirect
 	gopkg.in/ini.v1 v1.62.0 // indirect
 	honnef.co/go/tools v0.1.4 // indirect
