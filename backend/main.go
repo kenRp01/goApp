@@ -29,7 +29,8 @@ func main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/public", public)
-	r.HandleFunc("/private", private)
+	// JWTを持っていればprivateのレスポンスを確認できる
+	r.HandleFunc("/private", authMiddleware(private))
 
 	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(allowedOrigins, allowedMethods, allowedHeaders)(r)))
 
