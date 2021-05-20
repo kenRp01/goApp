@@ -26,6 +26,7 @@ func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Firebase SDK のセットアップ
 		opt := option.WithCredentialsFile(os.Getenv("CREDENTIALS"))
+		// opt := option.WithCredentialsFile("/Users/owner/go/goapp-6672a-firebase-adminsdk-3kzxr-32cf40ad8c.json")
 		app, err := firebase.NewApp(context.Background(), nil, opt)
 		if err != nil {
 			fmt.Printf("error: %v\n", err)

@@ -8,12 +8,13 @@ import firebase from 'firebase'
 Vue.config.productionTip = false
 
 const config = {
-	apiKey: 'YOUR_KEY',
-	authDomain: 'YOUR_DOMAIN.firebaseapp.com',
-  databaseURL: 'YOUR_DOMAIN.firebaseio.com',
-  projectId: 'YOUR_ID',
-  storageBucket: 'YOUR_BUCKET_ID.appspot.com',
-  messagingSenderId: 'YOUR_SENDER_ID'
+  apiKey: 'AIzaSyBWd14opK0hjb3OaIpNbO9GmxQCZKRlQYw',
+  authDomain: 'goapp-6672a.firebaseapp.com',
+  projectId: 'goapp-6672a',
+  storageBucket: 'goapp-6672a.appspot.com',
+  messagingSenderId: '1022367745914',
+  appId: '1:1022367745914:web:50555346b1ea51747ff8c3',
+  measurementId: 'G-BX5WNYHPL8'
 }
 firebase.initializeApp(config)
 
@@ -39,4 +40,3 @@ firebase.auth().onAuthStateChanged(user => {
     })
   }
 })
-
