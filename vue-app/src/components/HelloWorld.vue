@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    signOut: function() {
+    signOut: function () {
       firebase.auth().signOut().then(() => {
         localStorage.removeItem('jwt')
         this.$router.push('/signin')
@@ -30,10 +30,12 @@ export default {
     apiPublic: async function () {
       let res = await axios.get('http://localhost:8000/public')
       this.msg = res.data
-     },
+    },
     apiPrivate: async function () {
-      let res = await axios.get('http://localhost:8000/private')
-      this.msg = res.data
+        let res = await axios.get('http://localhost:8000/private', {
+        headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
+        })
+        this.msg = res.data
     }
   }
 }

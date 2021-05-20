@@ -23,8 +23,8 @@ export default {
   },
   methods: {
     signUp: function () {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(res => {
-        console.log('Create account: ', res.user.email)
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {
+        console.log('Create account: ', user.email)
       }).catch(error => {
         console.log(error.message)
       })

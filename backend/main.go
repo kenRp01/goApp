@@ -22,20 +22,6 @@ func private(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("hello private!\n"))
 }
 
-func main() {
-	allowedOrigins := handlers.AllowedOrigins([]string{"http://localhost:8080"})
-	allowedMethods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT"})
-	allowedHeaders := handlers.AllowedHeaders([]string{"Authorization"})
-
-	r := mux.NewRouter()
-	r.HandleFunc("/public", public)
-	// JWTを持っていればprivateのレスポンスを確認できる
-	r.HandleFunc("/private", authMiddleware(private))
-
-	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(allowedOrigins, allowedMethods, allowedHeaders)(r)))
-
-}
-
 func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Firebase SDK のセットアップ
@@ -67,4 +53,19 @@ func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 		log.Printf("Verified ID token: %v\n", token)
 		next.ServeHTTP(w, r)
 	}
+}
+
+func main() {
+	// port := os.Getenv("SERVER_PORT")
+	allowedOrigins := handlers.AllowedOrigins([]string{"http://localhost:8000"})
+	allowedMethods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT"})
+	allowedHeaders := handlers.AllowedHeaders([]string{"Authorization"})
+
+	r := mux.NewRouter()
+	r.HandleFunc("/public", public)
+	// JWTを持っていればprivateのレスポンスを確認できる
+	r.HandleFunc("/private", authMiddleware(private))
+
+	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(allowedOrigins, allowedMethods, allowedHeaders)(r)))
+
 }

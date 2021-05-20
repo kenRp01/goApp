@@ -13,7 +13,7 @@ const config = {
   databaseURL: 'YOUR_DOMAIN.firebaseio.com',
   projectId: 'YOUR_ID',
   storageBucket: 'YOUR_BUCKET_ID.appspot.com',
-  messageingSenderId: 'YOUR_SENDER_ID'
+  messagingSenderId: 'YOUR_SENDER_ID'
 }
 firebase.initializeApp(config)
 
@@ -32,10 +32,11 @@ firebase.auth().onAuthStateChanged(user => {
   /* eslint-disable no-new */
   if (!app) {
     new Vue({
-      el: "#app",
+      el: '#app',
       router,
-      componrnts: {App },
+      components: { App },
       template: '<App/>'
     })
   }
 })
+

@@ -7,6 +7,7 @@ require (
 	cloud.google.com/go/firestore v1.5.0 // indirect
 	cloud.google.com/go/storage v1.15.0 // indirect
 	firebase.google.com/go v3.13.0+incompatible // indirect
+	firebase.google.com/go/v4 v4.5.0 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
 	github.com/go-delve/delve v1.6.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect

@@ -1,4 +1,3 @@
-
 <template>
     <div class="signin">
         <h2>Sign in</h2>
