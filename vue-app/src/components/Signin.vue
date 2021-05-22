@@ -23,10 +23,9 @@ export default {
   methods: {
     signIn: function () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-        console.log(this.email, this.password)
-        // JWTをローカルストレージに保管
-        localStorage.setItem('jwt', res.user.qa)
-        // ログイン後の遷移先
+        res.user.getIdToken().then(idToken => {
+          localStorage.setItem('jwt', idToken.toString())
+        })
         this.$router.push('/')
       }, err => {
         alert(err.message)

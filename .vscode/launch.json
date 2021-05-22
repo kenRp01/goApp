@@ -21,6 +21,8 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
+            "host": "localhost",
+            "port": 8000,
             "program": "${fileDirname}",
             "env": {},
             "args": []

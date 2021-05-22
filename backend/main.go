@@ -25,8 +25,8 @@ func private(w http.ResponseWriter, r *http.Request) {
 func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		// Firebase SDK のセットアップ
-		opt := option.WithCredentialsFile(os.Getenv("CREDENTIALS"))
-		// opt := option.WithCredentialsFile("/Users/owner/go/goapp-6672a-firebase-adminsdk-3kzxr-32cf40ad8c.json")
+		// opt := option.WithCredentialsFile(os.Getenv("CREDENTIALS"))
+		opt := option.WithCredentialsFile("/Users/owner/go/goapp-6672a-firebase-adminsdk-3kzxr-32cf40ad8c.json")
 		app, err := firebase.NewApp(context.Background(), nil, opt)
 		if err != nil {
 			fmt.Printf("error: %v\n", err)
@@ -58,7 +58,7 @@ func authMiddleware(next http.HandlerFunc) http.HandlerFunc {
 
 func main() {
 	// port := os.Getenv("SERVER_PORT")
-	allowedOrigins := handlers.AllowedOrigins([]string{"http://localhost:8000"})
+	allowedOrigins := handlers.AllowedOrigins([]string{"http://localhost:8080"})
 	allowedMethods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT"})
 	allowedHeaders := handlers.AllowedHeaders([]string{"Authorization"})
 
@@ -67,6 +67,7 @@ func main() {
 	// JWTを持っていればprivateのレスポンスを確認できる
 	r.HandleFunc("/private", authMiddleware(private))
 
+	// ポート番号8080で待ち受けるHTTPサーバを起動します。
 	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(allowedOrigins, allowedMethods, allowedHeaders)(r)))
 
 }
