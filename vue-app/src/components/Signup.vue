@@ -1,4 +1,3 @@
-
 <template>
   <div class="signup">
     <h2>Sign up</h2>
@@ -23,8 +22,8 @@ export default {
   },
   methods: {
     signUp: function () {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {
-        console.log('Create account: ', user.email)
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(res => {
+        console.log('Create account: ', res.user.email)
       }).catch(error => {
         console.log(error.message)
       })
